@@ -1,0 +1,60 @@
+Selecting DOM elements is simple with jQuery. The basic syntax for selection is:
+$(<selector>).method()
+
+Get element by ID, type, Class, 
+Instead of accessing elements by ID using the document.getElementById method with pure JavaScript, use jQuery's $() selector function to accomplish this and more.
+To select by ID, use the CSS-style # selector:
+$("#myElement")
+$("p")
+$(".myClass")
+
+More Selectors
+other CSS-style selectors, positional selectors, multiple selectors...
+To select all anchor elements that are direct descendants of a nav element:
+$('nav > a')
+
+
+
+instead of the following scenario to access an element and set it's innerHTML property using JavaScript:
+var myElement = document.getElementById("myElement");
+myElement.innerHTML = "Hello";
+We could achieve the same with the following using jQuery:
+var myElement = $("#myElement");
+myElement.html("Hello");
+
+jQuery objects that wrap around DOM elements contain the following methods (and more):
+.html()
+As the example above demonstrates, the .html() method is used to access or modify the inner HTML of an element.
+.text()
+Similarly, the .test() method is used to access or modify the text contents of an element.
+.addClass()
+The .addClass() method allows you to modify the class list of an element.
+$("#myElement").addClass("test");
+.attr()
+The .attr() method allows you to modify a specific attribute of an element and set its value.
+
+
+.on
+$("p").on("click hover", function(){
+    alert("You clicked or hovered on a paragraph");
+});
+
+
+
+Ajax with jQuery
+jQuery provides Ajax support via a full-featured $.ajax() method, and simple convenience methods: $.get(), $.getScript(), $.getJSON(), $.post(), and $().load().
+The $.get(), $.getJSON(), and $.post() methods can be used to send GET and POST requests using the shorthand convenience methods. Each of these methods accepts the following parameters, in order:
+url: The URL for the request. Required.
+data: Optional - data to send to the server. This can either be an object or a query string for filtering, such as id=3.
+a success callback function: an optional callback function to process the response when it is received. The function receives the response data (as a JavaScript object if the requested data type was JSON), the text status of the request, and the request object that was sent.
+data type: optionally specify the type of data you expect back from the server, such as JSON.
+For example, to send a GET request to a sample API endpoint /users and retrieve the user info for a user with the id of 4, we could use jQuery as follows:
+
+var queryInfo = {
+    id: 4
+};
+// Get JSON-formatted data from the server
+$.getJSON( "/users", queryInfo, function( response ) {
+    console.log("Received user info for username: " + response.name);
+});
+
